@@ -27,8 +27,12 @@ function Question(question, answers,correct){
     this.correct = correct;
 }
 
-Question.prototype.displayQuestion(){
-    
+Question.prototype.displayQuestion = function() {
+    console.log(this.question);
+
+    for(var i = 0; i < this.answers.length; i++){
+        console.log(i + ': ' + this.answers[i]);
+    }
 };
 
 //Creamos las preguntas
@@ -49,6 +53,6 @@ var q3 = new Question('Cual es la respuesta correcta de la siguiente operacion: 
 
 var questions = [q1, q2, q3];
 
-var n = Math.floor(Math.random() * questions.length);
+var n = Math.floor(Math.random() * questions.length); //el metodo Math nos dara un numero entre 0 y 1, por eso lo multiplicamos por un numero para que sea mayor y el metodo Floor nos quita los decimales.
 
-questions[n];
+questions[n].displayQuestion();
