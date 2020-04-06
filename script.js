@@ -18,3 +18,37 @@ c) respuesta correcta (usaría un número para esto)
 
 7. Suponga que este código sería un complemento para que otros programadores lo usen en su código. Así que asegúrese de que todo su código sea privado y no interfiera con el código de otros programadores (Sugerencia: aprendimos una técnica especial para hacer exactamente eso).
 */
+
+
+function Question(question, answers,correct){
+
+    this.question = question;
+    this.answers = answers;
+    this.correct = correct;
+}
+
+Question.prototype.displayQuestion(){
+    
+};
+
+//Creamos las preguntas
+var q1 = new Question('La operacion 32+32=64 es correcta?',
+
+
+                    ['Yes', 'No'],
+                    0); // NOS BASAMOS EN EL CONTRUCTOR DE ARRIBA
+
+var q2 = new Question('Cual es la respuesta correcta de la siguiente operacion: 5x6=?',
+                    ['25',
+                    '35',
+                    '30'],2);
+
+var q3 = new Question('Cual es la respuesta correcta de la siguiente operacion: 8x4=?',
+                    ['42','34',
+                    '32'],2);
+
+var questions = [q1, q2, q3];
+
+var n = Math.floor(Math.random() * questions.length);
+
+questions[n];
