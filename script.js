@@ -17,10 +17,18 @@ c) respuesta correcta (usaría un número para esto)
 6. Compruebe si la respuesta es correcta e imprima en la consola si la respuesta es correcta o no (Sugerencia: escriba otro método para esto).
 
 7. Suponga que este código sería un complemento para que otros programadores lo usen en su código. Así que asegúrese de que todo su código sea privado y no interfiera con el código de otros programadores (Sugerencia: aprendimos una técnica especial para hacer exactamente eso).
+
+8. Después de mostrar el resultado, muestra la siguiente pregunta aleatoria, para que el juego nunca termine (Sugerencia: escribe una función para esto y llámalo inmediatamente después de mostrar el resultado)
+
+9. Tenga cuidado: después de la Tarea 8, el juego literalmente nunca termina. Por lo tanto, incluya la opción de salir del juego si el usuario escribe 'salir' en lugar de la respuesta. En este caso, NO llame a la función desde la tarea 8.
+
+10. ¡Sigue el puntaje del usuario para que el juego sea más divertido! Entonces, cada vez que una respuesta sea correcta, agregue 1 punto al puntaje (Sugerencia: voy a usar el poder de los cierres para esto, pero no tiene que hacerlo, solo haga esto con las herramientas con las que se sienta más cómodo) punto).
+
+11. Visualice la puntuación en la consola. Use otro método para esto.
 */
 
-(function(){ //funcion privada
-    function Question(question, answers,correct){
+(function(){ //funcion privada PASO 7
+    function Question(question, answers,correct){ //PASO 1
 
         this.question = question;
         this.answers = answers;
@@ -35,7 +43,7 @@ c) respuesta correcta (usaría un número para esto)
         }
     };
     
-    Question.prototype.checkAmswer = function(ans) {
+    Question.prototype.checkAmswer = function(ans) { //PASO 6
         if(ans === this.correct){
             console.log('Respuesta correcta');
         }else{
@@ -44,7 +52,7 @@ c) respuesta correcta (usaría un número para esto)
     };
     
     
-    //Creamos las preguntas
+    //Creamos las preguntas PASO 2
     var q1 = new Question('La operacion 32+32=64 es correcta?',
     
     
@@ -60,13 +68,13 @@ c) respuesta correcta (usaría un número para esto)
                         ['42','34',
                         '32'],2);
     
-    var questions = [q1, q2, q3];
+    var questions = [q1, q2, q3]; //PASO 3
     
-    var n = Math.floor(Math.random() * questions.length); //el metodo Math nos dara un numero entre 0 y 1, por eso lo multiplicamos por un numero para que sea mayor y el metodo Floor nos quita los decimales.
+    var n = Math.floor(Math.random() * questions.length); //el metodo Math nos dara un numero entre 0 y 1, por eso lo multiplicamos por un numero para que sea mayor y el metodo Floor nos quita los decimales. PASO 4
     
     questions[n].displayQuestion();
     
-    var answer = parseInt(prompt('Por favor, elija la respuesta correcta.')); //la funcion parseInt convierte una cadena en un numero entero, la funcion prompt es para mostrar el mensaje en una ventana.
+    var answer = parseInt(prompt('Por favor, elija la respuesta correcta.')); //la funcion parseInt convierte una cadena en un numero entero, la funcion prompt es para mostrar el mensaje en una ventana. PASO 5
     
     questions[n].checkAmswer(answer);
 })();
