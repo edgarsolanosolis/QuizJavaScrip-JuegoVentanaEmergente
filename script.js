@@ -70,19 +70,33 @@ c) respuesta correcta (usaría un número para esto)
     
     var questions = [q1, q2, q3]; //PASO 3
 
+    function score(){ //PASO 10
+        var sc = 0;
+        return function (correct){
+            if(correct){
+                sc++;
+            }
+            return score;
+        }
+    };
 
-    
+    var keepScore = score();
+
+
     function nextQuestion(){ //PASO 8
     
     var n = Math.floor(Math.random() * questions.length); //el metodo Math nos dara un numero entre 0 y 1, por eso lo multiplicamos por un numero para que sea mayor y el metodo Floor nos quita los decimales. PASO 4
     
     questions[n].displayQuestion();
     
-    var answer = parseInt(prompt('Por favor, elija la respuesta correcta.')); //la funcion parseInt convierte una cadena en un numero entero, la funcion prompt es para mostrar el mensaje en una ventana. PASO 5
+    var answer = prompt('Por favor, elija la respuesta correcta.'); //la funcion prompt es para mostrar el mensaje en una ventana. PASO 5
     
-    questions[n].checkAmswer(answer);
 
-    nextQuestion();
-    }
+        if(answer != 'exit'){ //PASO 9
+            questions[n].checkAmswer(parseInt(answer)); //la funcion parseInt convierte una cadena en un numero entero
+            nextQuestion();
+        }
+
+    };
     nextQuestion();
 })();
