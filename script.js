@@ -43,13 +43,24 @@ c) respuesta correcta (usaría un número para esto)
         }
     };
     
-    Question.prototype.checkAmswer = function(ans) { //PASO 6
+    Question.prototype.checkAmswer = function(ans, callBack) { //PASO 6
+        var sc;
         if(ans === this.correct){
             console.log('Respuesta correcta');
+            sc = callBack(true);
+
         }else{
             console.log('Respusta incorrecta.');
+            sc = callBack(false);
         }
+
+        this.displayScore(sc);
     };
+
+        Question.prototype.displayScore = function(score){
+            console.log('Su puntuacion es: ' + score);
+            console.log('---------------------------------');
+        };
     
     
     //Creamos las preguntas PASO 2
@@ -76,11 +87,11 @@ c) respuesta correcta (usaría un número para esto)
             if(correct){
                 sc++;
             }
-            return score;
+            return sc;
         }
     };
 
-    var keepScore = score();
+    var keepScore = score(); // PASO 11 (Se extinde en todo el codigo, revisar, se llama CIERRES)
 
 
     function nextQuestion(){ //PASO 8
@@ -93,7 +104,7 @@ c) respuesta correcta (usaría un número para esto)
     
 
         if(answer != 'exit'){ //PASO 9
-            questions[n].checkAmswer(parseInt(answer)); //la funcion parseInt convierte una cadena en un numero entero
+            questions[n].checkAmswer(parseInt(answer), keepScore); //la funcion parseInt convierte una cadena en un numero entero     PASO 11
             nextQuestion();
         }
 
